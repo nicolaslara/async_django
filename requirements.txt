@@ -16,3 +16,4 @@ PyYAML
 selenium
 sqlparse
 tblib
+daphne

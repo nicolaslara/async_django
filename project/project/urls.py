@@ -18,12 +18,18 @@ from django.http import HttpResponse
 from django.urls import path
 
 
-async def my_view(request):
+async def async_view(request):
     import ipdb; ipdb.set_trace()
     return HttpResponse('response')
 
+
+def sync_view(request):
+    return HttpResponse('response')
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('view/', my_view),
+    path('async/', async_view),
+    path('sync/', sync_view),
 ]
 

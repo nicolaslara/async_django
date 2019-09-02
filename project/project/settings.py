@@ -41,13 +41,20 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'project.middleware.async_test_middleware',
+    'project.middleware.async_test_middleware',
+    'project.middleware.async_test_middleware',
+    'project.middleware.async_test_middleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'project.middleware.async_test_middleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'project.middleware.async_test_middleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+#MIDDLEWARE = []
 
 ROOT_URLCONF = 'project.urls'
 
@@ -118,3 +125,29 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
+
+import logging.config
+LOGGING_CONFIG = None
+logging.config.dictConfig({
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'console': {
+            # exact format is not important, this is the minimum information
+            'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'console',
+        },
+    },
+    'loggers': {
+    # root logger
+        '': {
+            'level': 'INFO',
+            'handlers': ['console'],
+        },
+    },
+})
