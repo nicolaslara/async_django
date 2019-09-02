@@ -1,0 +1,6 @@
+.idea*
+venv
+asgiref
+django
+__pycache__*
+*pyc
