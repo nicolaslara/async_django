@@ -19,11 +19,14 @@ from django.urls import path
 
 
 async def async_view(request):
-    import ipdb; ipdb.set_trace()
+    import asyncio
+    await asyncio.sleep(1)
     return HttpResponse('response')
 
 
 def sync_view(request):
+    from time import sleep
+    sleep(1)
     return HttpResponse('response')
 
 
