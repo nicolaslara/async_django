@@ -17,17 +17,19 @@ from django.contrib import admin
 from django.http import HttpResponse
 from django.urls import path
 
+from django.core.cache import cache
+
 
 async def async_view(request):
-    import asyncio
-    await asyncio.sleep(1)
-    return HttpResponse('response')
+    number = await cache.a.get('number', 0)
+    await cache.a.set('number', number+1)
+    return HttpResponse(str(number))
 
 
 def sync_view(request):
-    from time import sleep
-    sleep(1)
-    return HttpResponse('response')
+    number = cache.s.get('number', 0)
+    cache.s.set('number', number+1)
+    return HttpResponse(str(number))
 
 
 urlpatterns = [
