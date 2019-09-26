@@ -1,5 +1,4 @@
 -e ./django
--e ./asgiref
 argon2-cffi >= 16.1.0
 bcrypt
 docutils
@@ -16,4 +15,4 @@ PyYAML
 selenium
 sqlparse
 tblib
-daphne
+uvicorn
